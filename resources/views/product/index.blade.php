@@ -13,7 +13,7 @@
 						<h2>All <strong>Product</strong></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="{{ route('product.create') }}" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Add new Product</span></a>						
+						<a href="{{ route('product.create') }}" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Add new Product</span></a>					
 					</div>
 				</div>
 			</div>
