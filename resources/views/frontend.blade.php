@@ -15,7 +15,7 @@
                             @if( count( $item->products ) > 0)
                             <ul>
                                 @foreach ($item->products as $item)
-                                    <li><a href="{{ route('fontend.products', $item->slug) }}">{{ $item->name }}</a></li>
+                                    <li><a href="{{ route('fontend.products', $item->slug) }}">{{ $item->name }} - {{ $item->price }} tk</a></li>
                                 @endforeach
                             </ul>
                             @else
