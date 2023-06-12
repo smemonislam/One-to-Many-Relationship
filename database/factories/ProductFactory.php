@@ -18,19 +18,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'category_id'   => Category::get()->random()->id,
-            'name'      => fake()->randomElement([
-                "Nike",
-                "Patagonia",
-                "Amazon",
-                "Virgin",
-                "Monocle",
-                "Apple",
-                "Greyhound",
-                "Lush",
-                "Descriptive Brand Names",
-                "Evocative Brand Names",
-            ]),
+            'name'      => fake()->word(),
             'slug'      => fake()->unique()->slug(),
             'price'     => fake()->numberBetween($min = 500, $max = 8000),
         ];
