@@ -27,7 +27,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach( $categories as $row )
+					@forelse( $categories as $row )
 					<tr>
 						<td>{{ $loop->iteration }}</td>
 						<td>{{ $row->name }} </td>
@@ -41,7 +41,11 @@
                             </form>
 						</td>
 					</tr>
-					@endforeach
+					@empty 
+						<tr>
+							<td class="text-center mt-3" colspan="3">Not Found!</td>
+						</tr>
+					@endforelse
 				</tbody>
 			</table>
 			{{ $categories->onEachSide(5)->links() }}

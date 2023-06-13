@@ -30,14 +30,13 @@
 				</thead>
 				<tbody>
 					
-					@foreach( $product as $row )
+					@forelse( $product as $row )
 					<tr>
 						<td>{{ $loop->iteration }}</td>
 						<td>{{ $row->category->name }} </td>
 						<td>{{ $row->name }} </td>
 						<td>{{ $row->slug }} </td>
-						<td>{{ $row->price }} tk </td>
-						<td></td>					
+						<td>{{ $row->price }} tk </td>					
 						<td>
                             <form action="{{ route('product.destroy', $row->id) }}" method="POST" class="d-flex">
                                 <a href="{{ route('product.edit', $row->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -47,7 +46,11 @@
                             </form>
 						</td>
 					</tr>
-					@endforeach
+					@empty 
+						<tr>
+							<td class="text-center mt-3" colspan="5">Not Found!</td>
+						</tr>
+					@endforelse
 				</tbody>
 			</table>
 			{{ $product->onEachSide(5)->links() }}
