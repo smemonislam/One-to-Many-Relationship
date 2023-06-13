@@ -8,10 +8,23 @@ use Illuminate\Http\Request;
 
 class FontendController extends Controller
 {
-    public function index() {
-        $categories = Category::get();
+    public function index(Request $request) {
+
+        $search = $request->search;
+        if($search != NULL){
+            $categories = Category::where( function($query) use($search){
+                $query->where('name', 'like', '%'.$search.'%');
+            } )
+            ->orWhereHas('products', function($query) use($search){
+                $query->where('name', 'like', '%'.$search.'%');
+            })
+            ->get();
+        }else{
+            $categories = Category::get();
+        }       
         return view('frontend', compact('categories'));
     }
+
 
     public function category($category_slug){
         $category = Category::where('slug', $category_slug)->first();

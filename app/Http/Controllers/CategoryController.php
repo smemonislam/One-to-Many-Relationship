@@ -10,9 +10,17 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::latest()->paginate(5);
+        $search = $request->search;
+        if( $search != NULL ){
+            $categories = Category::where(function($query) use($search){
+                $query->where('name', 'like', '%'.$search.'%');
+            })
+            ->latest()->paginate(5);
+        }else{
+            $categories = Category::latest()->paginate(5);
+        }        
         return view('category.index', compact('categories'));
     }
 

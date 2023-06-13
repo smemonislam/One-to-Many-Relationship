@@ -5,7 +5,7 @@
 @section('content')
     <div class="container mt-4">
         <div class="row">
-            @foreach ($categories as $item)
+            @forelse ($categories as $item)
                 <div class="col-lg-4 mt-3">
                     <div class="card">
                         <div class="card-header">
@@ -24,7 +24,9 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <p>Not Found!</p>
+            @endforelse
         </div>
     </div>
 @endsection
